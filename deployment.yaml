@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-demo
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weather
+  template:
+    metadata:
+      labels:
+        app: weather
+    spec:
+      containers:
+        - name: weather-api
+          image: xxxxx.dkr.ecr.eu-west-2.amazonaws.com/my-ecr-demo-repo:latest
+          ports:
+            - containerPort: 3000
